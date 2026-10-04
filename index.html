@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SarkariExamPortal - SSC, UPSC, UP Police & Sarkari Naukri</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --primary-color: #0056b3;
+            --accent-color: #d9534f;
+            --border-color: #e0e0e0;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --primary-color: #2c3e50;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .theme-btn {
+            background: #ffffff;
+            color: #333;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .search-container {
+            text-align: center;
+            margin: 20px 10px;
+        }
+
+        .search-container input {
+            width: 90%;
+            max-width: 600px;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid var(--primary-color);
+            border-radius: 6px;
+            outline: none;
+        }
+
+        /* 3 Main Highlights (Latest, Admit Card, Result) */
+        .top-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 0 20px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Category Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .section-box h2 {
+            background-color: var(--primary-color);
+            color: white;
+            margin: 0;
+            padding: 10px 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .section-box.upsc h2 { background-color: #8e44ad; }
+        .section-box.uppolice h2 { background-color: #d35400; }
+        .section-box.ssc h2 { background-color: #2980b9; }
+        .section-box.railway h2 { background-color: #27ae60; }
+        .section-box.results h2 { background-color: #c0392b; }
+
+        .job-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .job-list li {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .job-list li:last-child {
+            border-bottom: none;
+        }
+
+        .job-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .job-list a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .badge-new {
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SarkariExamPortal</h1>
+        <button class="theme-btn" onclick="toggleTheme()">🌙 डार्क मोड</button>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterJobs()" placeholder="UPSC, UP Police, SSC, एडमिट कार्ड या रिजल्ट खोजें...">
+    </div>
+
+    <!-- मुख्य 3 भाग (Top Highlights) -->
+    <div class="top-highlights">
+        <div class="section-box">
+            <h2>🔥 लेटेस्ट वैकेंसी (Latest Jobs)</h2>
+            <ul class="job-list">
+                <li><a href="#">SSC CGL Recruitment Online Form</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">UPSC IAS/IFS Civil Services Exam</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">UP Police Constable Vacancy</a></li>
+            </ul>
+        </div>
+        <div class="section-box">
+            <h2>🎫 एडमिट कार्ड (Admit Card)</h2>
+            <ul class="job-list">
+                <li><a href="#">UP Police SI Hall Ticket Download</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">SSC GD Constable Admit Card</a></li>
+                <li><a href="#">UPSC Mains Exam City Slip</a></li>
+            </ul>
+        </div>
+        <div class="section-box results">
+            <h2>🏆 परिणाम (Results)</h2>
+            <ul class="job-list">
+                <li><a href="#">UPSC Final Result Declared</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">UP Police Constable Final Result</a></li>
+                <li><a href="#">SSC CHSL Tier-I Result</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- श्रेणी अनुसार वैकेंसी (Category Wise Grid) -->
+    <div class="grid-container">
+        
+        <!-- UPSC Category -->
+        <div class="section-box upsc">
+            <h2>🏛️ UPSC जॉब्स (Civil Services, NDA, CDS)</h2>
+            <ul class="job-list">
+                <li><a href="#">UPSC Civil Services (IAS/IPS) Apply Online</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">UPSC NDA & NA Exam Online Form</a></li>
+                <li><a href="#">UPSC CDS Notification & Apply Link</a></li>
+                <li><a href="#">UPSC CAPF Assistant Commandant</a></li>
+            </ul>
+        </div>
+
+        <!-- UP Police Category -->
+        <div class="section-box uppolice">
+            <h2>🚨 UP पुलिस (Constable, SI, Computer Operator)</h2>
+            <ul class="job-list">
+                <li><a href="#">UP Police Constable 60,000+ Post Form</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">UP Police Sub Inspector (SI) Vacancy</a></li>
+                <li><a href="#">UP Police Computer Operator Recruitment</a></li>
+                <li><a href="#">UP Jail Warder & Fireman Bharti</a></li>
+            </ul>
+        </div>
+
+        <!-- SSC Category -->
+        <div class="section-box ssc">
+            <h2>📋 SSC जॉब्स (CGL, CHSL, GD, MTS)</h2>
+            <ul class="job-list">
+                <li><a href="#">SSC CGL Online Application Form</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">SSC CHSL (10+2) Recruitment</a></li>
+                <li><a href="#">SSC GD Constable Vacancy</a></li>
+                <li><a href="#">SSC MTS & Havaldar Post</a></li>
+            </ul>
+        </div>
+
+        <!-- Railway Category -->
+        <div class="section-box railway">
+            <h2>🚆 रेलवे भर्ती (RRB NTPC, Group D, ALP)</h2>
+            <ul class="job-list">
+                <li><a href="#">Railway RRB NTPC Online Form</a> <span class="badge-new">NEW</span></li>
+                <li><a href="#">RRB Assistant Loco Pilot (ALP) Vacancy</a></li>
+                <li><a href="#">Railway Group D Recruitment</a></li>
+                <li><a href="#">RRB Technician Grade III Bharti</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© SarkariExamPortal - UPSC, UP Police, SSC, Railway & All Sarkari Naukri Updates</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function filterJobs() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let items = document.querySelectorAll('.job-list li');
+
+            items.forEach(function(item) {
+                let text = item.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
